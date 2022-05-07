@@ -1,7 +1,8 @@
 import requests
 from lxml import etree
-import os
-response = requests.get("https://www.vectorstock.com/royalty-free-vectors/aaa-vectors")
+import os,sys
+key = sys.argv[1]
+response = requests.get("https://www.vectorstock.com/royalty-free-vectors/"+key+"-vectors")
 html=etree.HTML(response.text)
 res = html.xpath('//img[@class="reveal"]/@src')
 for item in res:
